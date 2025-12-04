@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    /* Base Options */
+    "target": "ES2022",           /* Node.js 24にも対応 */
+    "module": "NodeNext",         /* 最新のNode.jsモジュール解決策を採用 */
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2022"],            /* サーバーサイド前提（DOMは含めない） */
+    
+    /* Strict Type-Checking (The Law) */
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "useUnknownInCatchVariables": true,
+    "alwaysStrict": true,
+
+    /* Additional Checks */
+    "noUnusedLocals": true,       /* 使ってない変数はエラー */
+    "noUnusedParameters": true,   /* 使ってない引数はエラー */
+    "noImplicitReturns": true,    /* 関数の戻り値漏れを防ぐ */
+    "noFallthroughCasesInSwitch": true,
+
+    /* Interop & Build */
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    
+    /* Monorepo Settings */
+    "composite": true,            /* プロジェクト参照機能の有効化（高速ビルド用） */
+    "declaration": true,          /* 型定義ファイル(.d.ts)を出力 */
+    "declarationMap": true,       /* 定義元へジャンプできるようにする */
+    "sourceMap": true
+  },
+  "exclude": ["node_modules", "dist"]
+}
