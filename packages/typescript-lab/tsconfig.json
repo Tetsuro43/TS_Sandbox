@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.json",  /* 親（憲法）を継承する */
+  
+  "compilerOptions": {
+    /* 子独自の条例 */
+    "outDir": "./dist",              /* ビルド結果はこのフォルダの中に吐き出す */
+    "rootDir": "./src",              /* ソースコードはこのフォルダにある */
+    
+    /* Node.js (v24) で実行するための設定 */
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext"
+  },
+  
+  /* このパッケージが管理するファイルの範囲 */
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.test.ts"]
+}
