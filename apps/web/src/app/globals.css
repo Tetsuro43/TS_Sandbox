@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+/* Tailwind v4 の新機能: @source 
+   これで「このフォルダの中も探してね」と伝える。
+   
+   1. srcディレクトリ (念のため明示)
+   2. packages/ui (超重要: これがないとボタンに色がつきません)
+*/
+/* apps/web/src の親(=apps/web)全体を見る */
+@source "../";
+/* 相対パスで ui パッケージを指す */
+@source "../../../../packages/ui";
+
+/* ... 以下、既存のテーマ設定など ... */
+@theme {
+  /* ... */
+}

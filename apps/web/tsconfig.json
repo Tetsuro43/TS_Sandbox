@@ -1,0 +1,41 @@
+{
+  "extends": "../../tsconfig.json", // 👈 これが最重要。親ルールを引き継ぐ
+  "compilerOptions": {
+    /* Base Options Override */
+    // targetは親(ES2022)を継承するので書かない（もしNext.jsが書き換えたらそれを受け入れる）
+    
+    /* Next.js Specifics */
+    "lib": ["dom", "dom.iterable", "esnext"], // ブラウザ機能ON
+    "allowJs": true,
+    "skipLibCheck": true,
+    "noEmit": true,           // Next.jsがビルド出力を行うためTSは出力しない
+    
+    /* Modules */
+    "module": "esnext",
+    "moduleResolution": "bundler", // 重要: Next.js App Router推奨
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    
+    /* JSX */
+    "jsx": "preserve",        // Next.jsのコンパイラに任せる設定
+    
+    /* Plugins & Paths */
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"]      // srcディレクトリ構成に合わせて調整
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "../../packages/types/**/*.ts" // 将来用: 型定義パッケージも含める
+  ],
+  "exclude": ["node_modules"]
+}

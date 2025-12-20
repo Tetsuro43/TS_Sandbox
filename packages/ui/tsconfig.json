@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.json", // 親設定を継承
+  "compilerOptions": {
+    /* React & Browser Setup */
+    "lib": ["ES2022", "DOM", "DOM.Iterable"], // ブラウザ機能ON
+    "jsx": "react-jsx",                       // React ON
+    "noEmit": true                            // Next.jsがビルドするのでファイル出力不要
+  },
+  "include": ["src/**/*"]
+}
