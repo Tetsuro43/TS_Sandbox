@@ -1,4 +1,30 @@
 "use client";
+
+/* 
+index.tsxというファイル名を取りやめ。
+理由：
+1. "Tab Hell" (タブ地獄) の回避
+これが index.tsx を避ける最大の理由だ。 開発が進むと、エディタで複数のファイルを開いて作業することになる。もし全てのコンポーネントを index.tsx で作っていたらどうなるか？
+❌ index.tsx パターン:
+VSCodeのタブ: index.tsx | index.tsx | index.tsx
+「どれがButtonで、どれがHeaderだ…？」 と脳内メモリを無駄に消費する。
+
+⭕️ Button.tsx パターン:
+VSCodeのタブ: Button.tsx | Header.tsx | Input.tsx
+一目瞭然だ。
+
+2. ファイル検索 (Fuzzy Search) の最適化
+プロの開発者は、ファイルツリーをポチポチクリックしない。Cmd + P (Quick Open) でファイル名を叩いて移動する。
+index.tsxの場合: "Button" と打っても、ヒットするのはフォルダ名だけで、ファイル自体は index.tsx なので直感的に探しにくい。
+Button.tsxの場合: "Button" と打てば、Button.tsx が最上位にヒットする。
+この「0.X秒の思考ノイズ」を減らすことが、チーム全体の生産性に直結する。
+
+3. デバッグ時のスタックトレース
+エラーが起きた時、ブラウザのコンソールには「ファイル名と行数」が表示される。
+Bad: Error at index.tsx:15 (「どこの index だよ！」と叫びたくなる)
+Good: Error at Button.tsx:15 (「あ、ボタンか」と即座に特定できる)
+*/
+
 /* 
 【課題】汎用的な「Buttonコンポーネント」の設計
 ただの <button> タグではなく、デザインシステムの一部として機能する Button コンポーネントを作成してください。

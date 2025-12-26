@@ -8,7 +8,20 @@
     "lib": ["dom", "dom.iterable", "esnext"], // ブラウザ機能ON
     "allowJs": true,
     "skipLibCheck": true,
-    "noEmit": true,           // Next.jsがビルド出力を行うためTSは出力しない
+    // ① 必須：これがないと「参照されるプロジェクト」として認識されない
+    "composite": true,
+
+    // ② 必須：エラーメッセージ「may not disable emit」を消すために必要
+    "noEmit": false,
+    
+    // ③ ほぼ必須：これを書かないと、不要な「.jsファイル」が生成されてフォルダが汚れる
+    "emitDeclarationOnly": true,
+
+    // ④ 必須：②と③を設定した以上、「じゃあ何を出すの？」に対する答えが必要
+    "declaration": true,
+
+    // ⑤ 推奨：これがないと、Command+Clickで「関数の定義元」にジャンプできなくなる
+    "declarationMap": true,
     
     /* Modules */
     "module": "esnext",
