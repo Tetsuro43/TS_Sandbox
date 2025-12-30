@@ -1,27 +1,73 @@
-# Nestjs specific
-/dist
-/node_modules
-/build
-/tmp
+# ------------------------------------------------------
+# .gitignore には重要な「スラッシュのルール」
+# node_modules/ (先頭にスラッシュなし):
+#  意味: 「どこにあっても、node_modules という名前のフォルダなら無視せよ」
+#  対象: root/node_modules, packages/ui/node_modules, apps/web/node_modules すべて無視される。
+# /node_modules/ (先頭にスラッシュあり):
+#  意味: 「この階層（ルート）にある node_modules だけを無視せよ」
+#  対象: packages/ui/node_modules は無視されない（追跡されてしまう）。
+# ------------------------------------------------------
 
-# Logs
-logs
-*.log
+# ------------------------------------------------------
+# 📦 Dependencies
+# ------------------------------------------------------
+node_modules/
 npm-debug.log*
-pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 lerna-debug.log*
 
-# dotenv environment variable files
+# ------------------------------------------------------
+# 🏗 Build Outputs (生成物)
+# ------------------------------------------------------
+# NestJS / General
+/dist/
+/build/
+
+# Next.js
+.next/
+out/
+
+# Storybook
+storybook-static/
+
+# ------------------------------------------------------
+# 🔒 Secrets & Environment (秘密情報)
+# ------------------------------------------------------
 .env
-.env.development
-.env.test
-.env.production
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
 
-# temp directory
-.temp
-.tmp
+# (注: .env.example などのテンプレートは含めても良いが、実データは絶対NG)
 
-*storybook.log
-storybook-static
+# ------------------------------------------------------
+# ⚙️ Editor & OS (個人設定)
+# ------------------------------------------------------
+.DS_Store
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.idea/
+*.swp
+*.swo
+
+# ------------------------------------------------------
+# 🧪 Testing & Coverage
+# ------------------------------------------------------
+coverage/
+junit.xml
+
+# ------------------------------------------------------
+# 🗑 Temporary & Cache & Log
+# ------------------------------------------------------
+.tmp/
+tmp/
+*.tsbuildinfo
+*.log
+
