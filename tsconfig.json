@@ -4,8 +4,8 @@
     "target": "ES2022",           /* Node.js 24にも対応 */
     "module": "NodeNext",         /* 最新のNode.jsモジュール解決策を採用 */
     "moduleResolution": "NodeNext",
-    "lib": ["ES2022"],            /* サーバーサイド前提（DOMは含めない） */
-    
+    "lib": ["ES2022"],
+    /* "jsx": "react-jsx", */ 
     /* Strict Type-Checking (The Law) */
     "strict": true,
     "noImplicitAny": true,
@@ -34,5 +34,9 @@
     "declarationMap": true,       /* 定義元へジャンプできるようにする */
     "sourceMap": true
   },
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["node_modules", "dist"],
+  "references": [
+    { "path": "./apps/web" },
+    { "path": "./packages/ui" }
+  ]
 }

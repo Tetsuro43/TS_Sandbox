@@ -1,0 +1,54 @@
+{
+  "extends": "../../tsconfig.json", // 👈 これが最重要。親ルールを引き継ぐ
+  "compilerOptions": {
+    /* Base Options Override */
+    // targetは親(ES2022)を継承するので書かない（もしNext.jsが書き換えたらそれを受け入れる）
+    
+    /* Next.js Specifics */
+    "lib": ["dom", "dom.iterable", "esnext"], // ブラウザ機能ON
+    "allowJs": true,
+    "skipLibCheck": true,
+    // ① 必須：これがないと「参照されるプロジェクト」として認識されない
+    "composite": true,
+
+    // ② 必須：エラーメッセージ「may not disable emit」を消すために必要
+    "noEmit": false,
+    
+    // ③ ほぼ必須：これを書かないと、不要な「.jsファイル」が生成されてフォルダが汚れる
+    "emitDeclarationOnly": true,
+
+    // ④ 必須：②と③を設定した以上、「じゃあ何を出すの？」に対する答えが必要
+    "declaration": true,
+
+    // ⑤ 推奨：これがないと、Command+Clickで「関数の定義元」にジャンプできなくなる
+    "declarationMap": true,
+    
+    /* Modules */
+    "module": "esnext",
+    "moduleResolution": "bundler", // 重要: Next.js App Router推奨
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    
+    /* JSX */
+    "jsx": "preserve",        // Next.jsのコンパイラに任せる設定
+    
+    /* Plugins & Paths */
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"]      // srcディレクトリ構成に合わせて調整
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "../../packages/types/**/*.ts" // 将来用: 型定義パッケージも含める
+  ],
+  "exclude": ["node_modules"]
+}
